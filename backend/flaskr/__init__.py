@@ -214,10 +214,10 @@ def create_app(test_config=None):
 
         try:
             previous_questions_ids = body['previous_questions']
-            quiz_category = str(body['quiz_category']['id'])
+            quiz_category = body['quiz_category']['id']
 
             if quiz_category != 0:
-                questions = Question.query.filter(Question.category == quiz_category).order_by(Question.id).all()
+                questions = Question.query.filter(Question.category == str(quiz_category)).order_by(Question.id).all()
             else:
                 questions = Question.query.order_by(Question.id).all()
 
