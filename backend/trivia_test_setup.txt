@@ -1,0 +1,18 @@
+CREATE DATABASE trivia_test;
+\c trivia_test
+
+<<Run the python test (python test_flaskr.py) in another command line session to create the tables in the test db>>
+
+INSERT INTO categories (type) VALUES ('Science');
+INSERT INTO categories (type) VALUES ('Art');
+INSERT INTO categories (type) VALUES ('Geography');
+INSERT INTO categories (type) VALUES ('History');
+INSERT INTO categories (type) VALUES ('Entertainment');
+INSERT INTO categories (type) VALUES ('Sports');
+
+INSERT INTO questions (question, answer, category, difficulty) VALUES ('QUESTION', 'ANSWER', 2, 4);
+INSERT INTO questions (question, answer, category, difficulty) VALUES ('QUESTION 123', 'ANSWER', 2, 5);
+INSERT INTO questions (question, answer, category, difficulty) VALUES ('QUESTION 123', 'ANSWER', 2, 5);
+INSERT INTO questions (question, answer, category, difficulty) VALUES ('QUESTION 123', 'ANSWER', 3, 5);
+
+<<Run the python test (python test_flaskr.py) in another command line session>>
