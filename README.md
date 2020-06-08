@@ -1,5 +1,13 @@
 # Full Stack Trivia API
 
+## Introduction
+
+Trivia API is a quiz app! Expand your knowledge by going through all questions, or specific questions by category.
+Feel like you have a good question you don't see already, you can add it! 
+Want a little challenge, then go to the "play" mode and see how many points can you get out of five!
+
+Happy trivia-ing! 
+
 ## Installing Project Dependencies
 
 Navigate to the project directory. Then create a python virtual environment. Steps to setup and activate your virtual 
