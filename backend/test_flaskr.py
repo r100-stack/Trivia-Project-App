@@ -16,7 +16,8 @@ class TriviaTestCase(unittest.TestCase):
         self.app = create_app()
         self.client = self.app.test_client
         self.database_name = "trivia_test"
-        self.database_path = "postgres://{}:{}@{}/{}".format('postgres', 'Ropac123', 'localhost:5432', self.database_name)
+        self.database_path = "postgres://{}:{}@{}/{}".format('postgres', 'Ropac123', 'localhost:5432',
+                                                             self.database_name)
         setup_db(self.app, self.database_path)
 
         # binds the app to the current context
@@ -32,7 +33,6 @@ class TriviaTestCase(unittest.TestCase):
             'category': '2',
             'difficulty': 4
         }
-        
 
     def tearDown(self):
         """Executed after reach test"""
@@ -156,7 +156,7 @@ class TriviaTestCase(unittest.TestCase):
     def test_m_get_questions_for_quiz(self):
         category = {'id': 2, 'type': 'Art'}
         res = self.client().post('/quizzes', json={'previous_questions': [2, 3],
-                                                     'quiz_category': category})
+                                                   'quiz_category': category})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -174,6 +174,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], False)
         self.assertEqual(data['error'], 400)
         self.assertEqual(data['message'], 'Bad request')
+
 
 # Make the tests conveniently executable
 if __name__ == "__main__":
