@@ -43,8 +43,9 @@ flask run
 ### Testing
 
 1. Modify the postgres username and password in the self.database_path variable in testing_path.py
-2. First run the commands in the trivia_test_setup.txt in the backend folder. These commands setup the database needed 
-for the tests. 
+2. Create a database with the name trivia_test
+3. Run ```psql -d trivia_test -u <username> -a -f trivia.psql``` This add sample questions and categories to the test 
+database. 
 
 ## API Endpoints
 

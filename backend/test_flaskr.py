@@ -32,6 +32,7 @@ class TriviaTestCase(unittest.TestCase):
             'category': '2',
             'difficulty': 4
         }
+        
 
     def tearDown(self):
         """Executed after reach test"""
@@ -81,7 +82,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertTrue(data['question'])
         self.assertEqual(data['question']['question'], self.new_question['question'])
         self.assertEqual(data['question']['answer'], self.new_question['answer'])
-        self.assertEqual(data['question']['category'], self.new_question['category'])
+        self.assertEqual(data['question']['category'], int(self.new_question['category']))
         self.assertEqual(data['question']['difficulty'], self.new_question['difficulty'])
 
         global inserted_question_id
@@ -104,7 +105,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertTrue(data['question'])
         self.assertEqual(data['question']['question'], self.new_question['question'])
         self.assertEqual(data['question']['answer'], self.new_question['answer'])
-        self.assertEqual(data['question']['category'], self.new_question['category'])
+        self.assertEqual(data['question']['category'], int(self.new_question['category']))
         self.assertEqual(data['question']['difficulty'], self.new_question['difficulty'])
 
     def test_h_error_delete_question(self):
@@ -117,7 +118,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['message'], 'Not found')
 
     def test_i_get_questions_by_search(self):
-        res = self.client().post('/questions/search', json={'searchTerm': 'QUESTION 123'})
+        res = self.client().post('/questions/search', json={'searchTerm': 'Lestat'})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -157,11 +158,12 @@ class TriviaTestCase(unittest.TestCase):
         res = self.client().post('/quizzes', json={'previous_questions': [2, 3],
                                                      'quiz_category': category})
         data = json.loads(res.data)
+
         self.assertEqual(res.status_code, 200)
         self.assertTrue(data['question'])
         self.assertTrue(data['question']['question'])
         self.assertTrue(data['question']['answer'])
-        self.assertEqual(data['question']['category'], str(category['id']))
+        self.assertEqual(data['question']['category'], category['id'])
         self.assertTrue(data['question']['difficulty'])
 
     def test_n_get_questions_for_quiz(self):

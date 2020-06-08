@@ -229,6 +229,7 @@ def create_app(test_config=None):
                     question = q
                     break
 
+            print("ABC:", question)
             return jsonify({
                 'question': question.format() if question is not None else None
             })
